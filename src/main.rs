@@ -2,7 +2,7 @@ use std::io;
 // Import the `io` module from the standard library for input/output functions
 
 fn main() {
-    println!("\nGuess the number!\n");
+    println!("Guess the number!");
 
     println!("Please input your guess");
 
@@ -14,7 +14,7 @@ fn main() {
         // Reads a line of input from standard input and appends it to `guess`
         // `&mut guess` passes a mutable reference so the function can modify it
         .expect("Failed to read line");
-        // If reading fails, print this error and crash
+    // If reading fails, print this error and crash
 
     println!("You guessed {}", guess);
 }
