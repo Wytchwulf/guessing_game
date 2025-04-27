@@ -12,6 +12,9 @@ fn main() {
     // `thread_rng()` gives a random number generator specific to this thread.
     // `gen_range(1..=100)` means random number from 1 up to and including 100.
 
+    let mut attempts = 0;
+    // Initialize variable to log the number of attmpts.
+
     loop {
         // Start an infinite loop.
         // The game will keep asking until the player guesses correctly.
@@ -28,6 +31,15 @@ fn main() {
             .expect("Failed to read line");
         // Read a line of input from the terminal and put it into `guess`.
         // If it fails, crash the program with an error message.
+
+        attempts += 1;
+        // Increase the guess attempt counter
+
+        if guess.trim().eq_ignore_ascii_case("quit") {
+            println!("Goodbye");
+            break;
+        }
+        // If user types quit, exit the game.
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -47,7 +59,7 @@ fn main() {
             Ordering::Less => println!("Too Small!"),
             Ordering::Greater => println!("Too Big!"),
             Ordering::Equal => {
-                println!("You Win!!");
+                println!("You Win!! It took you {} attempts!", attempts);
                 break;
             }
         }
